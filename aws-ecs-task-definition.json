@@ -1,0 +1,53 @@
+{
+  "family": "youtube-chatbot",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "containerDefinitions": [
+    {
+      "name": "backend",
+      "image": "<YOUR_AWS_ACCOUNT_ID>.dkr.ecr.us-east-1.amazonaws.com/youtube-chatbot-backend:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8000,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {
+          "name": "GROQ_API_KEY",
+          "value": "YOUR_GROQ_API_KEY_HERE"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/youtube-chatbot",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "backend"
+        }
+      }
+    },
+    {
+      "name": "frontend",
+      "image": "<YOUR_AWS_ACCOUNT_ID>.dkr.ecr.us-east-1.amazonaws.com/youtube-chatbot-frontend:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/youtube-chatbot",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "frontend"
+        }
+      }
+    }
+  ]
+}
