@@ -2,6 +2,7 @@ import yt_dlp
 import glob
 import re
 import os
+from youtube_transcript_api import YouTubeTranscriptApi
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -13,6 +14,28 @@ from langchain_groq import ChatGroq
 
 
 def get_transcript(video_id: str) -> list:
+    """Get transcript using YouTube Transcript API (more reliable from cloud)"""
+    try:
+        # Try using YouTube Transcript API first (works from cloud IPs)
+        transcript_data = YouTubeTranscriptApi.get_transcript(video_id)
+        
+        transcript_list = []
+        for entry in transcript_data:
+            transcript_list.append({
+                'text': entry['text'],
+                'start': entry['start'],
+                'duration': entry['duration']
+            })
+        
+        return transcript_list
+    
+    except Exception as e:
+        # Fallback to yt-dlp if Transcript API fails
+        print(f"Transcript API failed: {e}, trying yt-dlp...")
+        return get_transcript_ytdlp(video_id)
+
+
+def get_transcript_ytdlp(video_id: str) -> list:
     url = f"https://www.youtube.com/watch?v={video_id}"
     out_path = f"/tmp/{video_id}"
 
@@ -25,9 +48,10 @@ def get_transcript(video_id: str) -> list:
         'outtmpl': out_path,
         'quiet': True,
         'no_warnings': True,
+        'cookiesfrombrowser': ('chrome',),  # Use browser cookies if available
         'extractor_args': {
             'youtube': {
-                'player_client': ['android', 'web'],
+                'player_client': ['android', 'web', 'ios'],
                 'skip': ['hls', 'dash']
             }
         },
