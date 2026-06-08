@@ -48,7 +48,6 @@ def get_transcript_ytdlp(video_id: str) -> list:
         'outtmpl': out_path,
         'quiet': True,
         'no_warnings': True,
-        'cookiesfrombrowser': ('chrome',),  # Use browser cookies if available
         'extractor_args': {
             'youtube': {
                 'player_client': ['android', 'web', 'ios'],
