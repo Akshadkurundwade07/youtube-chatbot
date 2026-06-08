@@ -2,7 +2,6 @@ import yt_dlp
 import glob
 import re
 import os
-from youtube_transcript_api import YouTubeTranscriptApi
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -16,7 +15,8 @@ from langchain_groq import ChatGroq
 def get_transcript(video_id: str) -> list:
     """Get transcript using YouTube Transcript API (more reliable from cloud)"""
     try:
-        # Try using YouTube Transcript API first (works from cloud IPs)
+        # Import inside function to handle version issues
+        from youtube_transcript_api import YouTubeTranscriptApi
         transcript_data = YouTubeTranscriptApi.get_transcript(video_id)
         
         transcript_list = []
