@@ -20,11 +20,9 @@
 
 ### Video Walkthrough
 
-**Watch TubeChat in Action:**
+[![TubeChat Demo](https://img.youtube.com/vi/SMbnwkWHkMc/maxresdefault.jpg)](https://youtu.be/SMbnwkWHkMc)
 
-[tubechat_.mp4](https://github.com/Akshadkurundwade07/youtube-chatbot/blob/main/tubechat_.mp4)
-
-*Click the video above to watch the demo*
+**🎬 [Watch Full Demo on YouTube](https://youtu.be/SMbnwkWHkMc)**
 
 ### Key Features in Action
 
