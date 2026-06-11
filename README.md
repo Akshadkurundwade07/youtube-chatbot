@@ -20,13 +20,11 @@
 
 ### Video Walkthrough
 
-<div align="center">
+**Watch TubeChat in Action:**
 
-https://github.com/Akshadkurundwade07/youtube-chatbot/assets/143732834/tubechat_.mp4
+[tubechat_.mp4](https://github.com/Akshadkurundwade07/youtube-chatbot/blob/main/tubechat_.mp4)
 
-*Watch TubeChat in action - Load videos, ask questions, get AI-powered answers*
-
-</div>
+*Click the video above to watch the demo*
 
 ### Key Features in Action
 
