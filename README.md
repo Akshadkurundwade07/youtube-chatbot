@@ -20,16 +20,20 @@
 
 ### Video Walkthrough
 
-https://github.com/user-attachments/assets/your-video-here
+https://github.com/user-attachments/assets/tubechat_.mp4
 
-> **Note:** Upload your `tubechat_demo.mp4` to display here, or link to YouTube
-
-### Screenshots
+> **Note:** Watch the demo video `tubechat_.mp4` in the repository root
 
 <div align="center">
-  <img src="https://via.placeholder.com/800x450/1a1a1a/00ff00?text=TubeChat+Interface" alt="TubeChat Interface" width="800"/>
-  <p><i>Replace with actual screenshot</i></p>
+  <img src="https://img.shields.io/badge/▶️-Watch_Demo-red?style=for-the-badge&logo=youtube" alt="Demo Video" />
 </div>
+
+### Key Features in Action
+
+- 🎯 Load any YouTube video by URL
+- 💬 Ask natural language questions
+- ⚡ Get instant AI-powered answers
+- 🔍 Context-aware responses from video content
 
 ### Try It Out
 

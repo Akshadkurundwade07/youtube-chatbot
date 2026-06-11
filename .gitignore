@@ -113,7 +113,7 @@ temp/
 # YouTube video files (downloaded by yt-dlp)
 /tmp/
 *.vtt
-*.mp4
+
 *.webm
 *.mkv
 
@@ -121,6 +121,8 @@ temp/
 *.pem
 *.key
 .aws/
+deploy-ec2-complete.sh
+deploy.sh
 
 # Coverage reports
 coverage/
