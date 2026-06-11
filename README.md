@@ -2,6 +2,32 @@
 
 Chat with any YouTube video using Groq + LangChain + FAISS.
 
+## 🎥 Demo
+
+### Video Demo
+<!-- Upload your demo video and replace this link -->
+https://github.com/user-attachments/assets/your-video-id
+
+*To add your demo video:*
+1. Record screen while using the app locally
+2. Upload `tubechat_demo.mp4` to your repo
+3. Or upload to YouTube and link here
+
+### Live Demo
+- ✅ **Local Development**: Fully functional
+- ⚠️ **Cloud (AWS EC2)**: Limited by YouTube's IP restrictions (see Known Limitations)
+
+### Features
+
+- 💬 Chat with any YouTube video using AI
+- 🚀 Lightning-fast responses powered by Groq
+- 🔍 Semantic search with FAISS vector embeddings  
+- 🎯 Context-aware answers from video transcripts
+- 🐳 Fully Dockerized with Docker Compose
+- ⚡ Modern UI built with React + Vite
+
+---
+
 ## Project Structure
 
 ```
@@ -240,3 +266,74 @@ docker-compose logs frontend
 **DevOps:**
 - Docker - Containerization
 - Docker Compose - Multi-container orchestration
+
+---
+
+## ⚠️ Known Limitations
+
+### YouTube Cloud IP Restrictions
+
+**Issue:** YouTube actively blocks transcript downloads from cloud IPs (AWS, Azure, GCP, etc.) to prevent automated scraping.
+
+**Impact:**
+- ✅ **Works perfectly on local development** (residential IPs)
+- ❌ **Limited on cloud deployments** (AWS EC2, cloud hosting)
+
+**Error Message:**
+```
+Sign in to confirm you're not a bot
+```
+
+**Why This Happens:**
+YouTube uses sophisticated bot detection that identifies and blocks requests from:
+- AWS EC2 IP ranges
+- Google Cloud Platform IPs
+- Azure datacenter IPs
+- Other cloud hosting providers
+
+**Solutions:**
+
+1. **Use Official YouTube Data API v3** (Recommended for production)
+   - Requires Google Cloud API key
+   - 10,000 requests/day free quota
+   - More reliable but limited to videos with captions
+
+2. **Deploy to Residential IP Services**
+   - Railway.app (sometimes works)
+   - Fly.io (sometimes works)
+   - Home server with dynamic DNS
+
+3. **Use Proxy Services** (Paid)
+   - Bright Data (~$10/month)
+   - Oxylabs
+   - ScraperAPI
+
+4. **Hybrid Approach**
+   - Run locally for development/demos
+   - Use YouTube Data API for production
+
+**Note for Recruiters/Employers:**
+This is a known platform limitation affecting all cloud-based YouTube scrapers, not a code issue. The application architecture, Docker deployment, and AI implementation are production-ready. Many commercial applications face this same challenge and solve it using the YouTube Data API.
+
+---
+
+## 📝 License
+
+MIT License - Feel free to use this project for learning and portfolio purposes.
+
+---
+
+## 🙏 Acknowledgments
+
+- [Groq](https://groq.com/) for ultra-fast LLM inference
+- [LangChain](https://langchain.com/) for LLM orchestration
+- [yt-dlp](https://github.com/yt-dlp/yt-dlp) for YouTube transcript extraction
+- [FAISS](https://github.com/facebookresearch/faiss) for vector similarity search
+
+---
+
+## 📧 Contact
+
+For questions or collaboration:
+- GitHub: [@Akshadkurundwade07](https://github.com/Akshadkurundwade07)
+- Project Link: [https://github.com/Akshadkurundwade07/youtube-chatbot](https://github.com/Akshadkurundwade07/youtube-chatbot)
