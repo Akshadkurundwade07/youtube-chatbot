@@ -1,5 +1,5 @@
 import os
-
+from dotenv import load_dotenv
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -8,15 +8,26 @@ from langchain_core.runnables import RunnableParallel, RunnablePassthrough, Runn
 from langchain_core.output_parsers import StrOutputParser
 from langchain_groq import ChatGroq
 
+load_dotenv()
+
 
 def get_transcript(video_id: str) -> list:
     import requests
 
     url = "https://api.supadata.ai/v1/youtube/transcript"
-    headers = {"x-api-key": "your_supadata_api_key"}
+    api_key = os.getenv("SUPADATA_API_KEY")
+    
+    if not api_key or api_key == "your_supadata_api_key":
+        raise ValueError(
+            "SUPADATA_API_KEY not configured. "
+            "Get your free API key from https://supadata.ai and add it to .env file"
+        )
+    
+    headers = {"x-api-key": api_key}
     params = {"videoId": video_id, "lang": "en"}
 
     response = requests.get(url, headers=headers, params=params)
+    response.raise_for_status()  # Raise error for bad status codes
     data = response.json()
 
     return [{'text': c['text'], 'start': c['offset']/1000, 'duration': c['duration']/1000}

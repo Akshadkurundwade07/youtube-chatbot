@@ -20,12 +20,12 @@
 
 ### Video Walkthrough
 
-https://github.com/user-attachments/assets/tubechat_.mp4
-
-> **Note:** Watch the demo video `tubechat_.mp4` in the repository root
-
 <div align="center">
-  <img src="https://img.shields.io/badge/▶️-Watch_Demo-red?style=for-the-badge&logo=youtube" alt="Demo Video" />
+
+https://github.com/Akshadkurundwade07/youtube-chatbot/assets/143732834/tubechat_.mp4
+
+*Watch TubeChat in action - Load videos, ask questions, get AI-powered answers*
+
 </div>
 
 ### Key Features in Action
